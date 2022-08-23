@@ -1,0 +1,712 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE775535-E257-4963-849C-897C31A6C5C0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CNF.Business</RootNamespace>
+    <AssemblyName>CNF.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="aes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\aes.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.4.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Costura, Version=3.3.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.3.3.2\lib\net40\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="EncDec, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EncDec.1.0.0\lib\net461\EncDec.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessConstant\BusinessCont.cs" />
+    <Compile Include="BusinessConstant\Email.cs" />
+    <Compile Include="BusinessConstant\PDFHelper.cs" />
+    <Compile Include="Hubs\ProgressHub.cs" />
+    <Compile Include="Model\ChequeAccounting\ChequeAccountingModel.cs" />
+    <Compile Include="Model\Configuration\Configuration.cs" />
+    <Compile Include="Model\Context\ChqSummaryForMonthly_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\ClearInv_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\CNFDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNFDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\CNFDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\CNFDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNFDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\fn_StringSplit_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\GetMapInwardVehicleListForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\MOB_GateSupervisorDashCounts_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\sp_helpdiagrams_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\ups_GetClaimNoList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\ups_GetClaimSRSDetailsById_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\ups_GetSRSHeaderListForClaimMapping_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\uspGetInsuranceClaimTypeList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_AppConfigurationList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_BranchMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CartingAgentMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_checkCAName_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_checkCourierName_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_checkEmpNo_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_checkStockistNo_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_checkTransporterMaster_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_checkUsernameAvailable_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CheuqeRegisterCounts_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CheuqeRegisterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_ChqDepoReceiptList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\Usp_ChqRegSummaryReport_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_ChqSummaryForMonthly_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CompanyMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CourierMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CreditNoteList_DestructionDue_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CreditNoteList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_CreditNoteList_UploadDestruction_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_DivisionMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_EmployeeCompanyDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_EmployeeMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GeneralMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetAdminDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetAllotedPickListForPicker_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetAllotmentDetailsPicklistWise_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetAssignedTransporterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetAuditLogDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetBranchById_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetcategoryList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetCCEmailandPurposeDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetCCPersonDetailsForEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetCityList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetClaimSRSMappedList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetDistrictList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetEmailConfigurationList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetGatepassDtlsForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetGatepassDtlsForPDF_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetGuardDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetImportCNDataList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInsuranceClaimByIdApprovalEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInsuranceClaimInvById_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInsuranceClaimInvoiceList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInsuranceClaimList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInternalAuditDtls_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvDtlsForEmail1_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvDtlsForEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvInLRDetailsForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvInVehicleCheckListForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvInVehicleCheckListMaster_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvoiceDetailsForSticker_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvoiceForChqBlock_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvoiceHeaderResolveConcern_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvoiceListForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvoiceListWithLRDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInvoiceSummaryCounts_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetInwradGatepassList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetLogDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetLRDtlsInvDtlsForEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetLrMisMatchList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetMapInwardVehicleListForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetMenuListRoleWise_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetmissingClaimFormList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetOfficerDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPickListForReallotment_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPicklistForResolveConcern_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPicklistSummaryCounts_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPicklistSummaryData_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPickList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPrintDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetPrintPDFData_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetRoleList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetSRSClaimListForVerify_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStateList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStkChqDepositDtlsForEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStkOutstandingDtlsForEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStockistDtlsClaimMapping_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStockistDtlsForMissingClaim_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStockistDtlsForSendEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetStockistForNewChqEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetTransitDataList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetUserDetailsForChangePwd_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_GetUserDeviceDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_ImportCNDetaForEmail_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_InsuranceClaimList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_InvInVehicleChecklistMaster_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_InvoiceHeaderListForAssignTransMode_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_InvoiceHeaderList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_InvStatusForMob_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_PhysicalCheck1List_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_RefreshTokenAddEdit_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_RG_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_RptChqRegisterSummary_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_RptChqSummaryForSalesTeam_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_SRSHeaderList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistBankListById_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistBranchRelationList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistCompRelationList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistMasterListByBranchId_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistMasterListByCompanyId_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistOSDocTypeWiseList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StockistOSList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_StokistTransportMappingList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_TransporterById_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_TransporterMasterList_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_UserListByRole_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_UserLoginCheck_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Context\usp_UserRoleDetails_Result.cs">
+      <DependentUpon>CNFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\InventoryInward\InventoryInward.cs" />
+    <Compile Include="Model\Login\AntiForgeryTokenModel.cs" />
+    <Compile Include="Model\Login\LoggerModel.cs" />
+    <Compile Include="Model\Login\Notification.cs" />
+    <Compile Include="Model\Master\BranchMaster.cs" />
+    <Compile Include="Model\OrderDispatch\OrderDispatch.cs" />
+    <Compile Include="Model\OrderReturn\OrderReturn.cs" />
+    <Compile Include="Model\User\AdminModel.cs" />
+    <Compile Include="Model\User\DistributorModel.cs" />
+    <Compile Include="Repositories\ChequeAccountingRepository.cs" />
+    <Compile Include="Repositories\ConfigurationRepository.cs" />
+    <Compile Include="Repositories\InventoryInwardRepository.cs" />
+    <Compile Include="Repositories\LoggerRepository.cs" />
+    <Compile Include="Repositories\LoginRepository.cs" />
+    <Compile Include="Repositories\AdminRepository.cs" />
+    <Compile Include="Repositories\MastersRepository.cs" />
+    <Compile Include="Repositories\OrderDispatchRepository.cs" />
+    <Compile Include="Repositories\OrderReturnRepository.cs" />
+    <Compile Include="Repositories\Repository\IAdminRepository.cs" />
+    <Compile Include="Repositories\Repository\IChequeAccountingRepository.cs" />
+    <Compile Include="Repositories\Repository\IConfigurationRepository.cs" />
+    <Compile Include="Repositories\Repository\IInventoryInwardRepository.cs" />
+    <Compile Include="Repositories\Repository\ILoggerRepository.cs" />
+    <Compile Include="Repositories\Repository\ILoginRepository.cs" />
+    <Compile Include="Repositories\Repository\IMastersRepository.cs" />
+    <Compile Include="Repositories\Repository\IOrderDispatchRepository.cs" />
+    <Compile Include="Repositories\Repository\IOrderReturnRepository.cs" />
+    <Compile Include="Repositories\Repository\IUserRepository.cs" />
+    <Compile Include="Model\Login\LoginAuth.cs" />
+    <Compile Include="Model\Login\RefreshTokenModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Repositories\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Resources\ExceptionLogging\ILogger.cs" />
+    <Compile Include="Resources\ExceptionLogging\Logger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\Aadyam.SDS.Business.dll.config" />
+    <None Include="bin\Release\Aadyam.SDS.Business.dll.config" />
+    <EntityDeploy Include="Model\Context\CNFDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CNFDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\Context\CNFDB.edmx.diagram">
+      <DependentUpon>CNFDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Aadyam.SDS.Business.dll" />
+    <Content Include="bin\Debug\Aadyam.SDS.Business.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\Microsoft.Win32.Primitives.dll" />
+    <Content Include="bin\Debug\netstandard.dll" />
+    <Content Include="bin\Debug\NetTopologySuite.dll" />
+    <Content Include="bin\Debug\NetTopologySuite.xml" />
+    <Content Include="bin\Debug\System.AppContext.dll" />
+    <Content Include="bin\Debug\System.Buffers.dll" />
+    <Content Include="bin\Debug\System.Buffers.xml" />
+    <Content Include="bin\Debug\System.Collections.Concurrent.dll" />
+    <Content Include="bin\Debug\System.Collections.dll" />
+    <Content Include="bin\Debug\System.Collections.NonGeneric.dll" />
+    <Content Include="bin\Debug\System.Collections.Specialized.dll" />
+    <Content Include="bin\Debug\System.ComponentModel.dll" />
+    <Content Include="bin\Debug\System.ComponentModel.EventBasedAsync.dll" />
+    <Content Include="bin\Debug\System.ComponentModel.Primitives.dll" />
+    <Content Include="bin\Debug\System.ComponentModel.TypeConverter.dll" />
+    <Content Include="bin\Debug\System.Console.dll" />
+    <Content Include="bin\Debug\System.Data.Common.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.Contracts.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.Debug.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.Process.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.TextWriterTraceListener.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.Tools.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.TraceSource.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.Tracing.dll" />
+    <Content Include="bin\Debug\System.Drawing.Primitives.dll" />
+    <Content Include="bin\Debug\System.Dynamic.Runtime.dll" />
+    <Content Include="bin\Debug\System.Globalization.Calendars.dll" />
+    <Content Include="bin\Debug\System.Globalization.dll" />
+    <Content Include="bin\Debug\System.Globalization.Extensions.dll" />
+    <Content Include="bin\Debug\System.IO.Compression.dll" />
+    <Content Include="bin\Debug\System.IO.Compression.ZipFile.dll" />
+    <Content Include="bin\Debug\System.IO.dll" />
+    <Content Include="bin\Debug\System.IO.FileSystem.dll" />
+    <Content Include="bin\Debug\System.IO.FileSystem.DriveInfo.dll" />
+    <Content Include="bin\Debug\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\Debug\System.IO.FileSystem.Watcher.dll" />
+    <Content Include="bin\Debug\System.IO.IsolatedStorage.dll" />
+    <Content Include="bin\Debug\System.IO.MemoryMappedFiles.dll" />
+    <Content Include="bin\Debug\System.IO.Pipes.dll" />
+    <Content Include="bin\Debug\System.IO.UnmanagedMemoryStream.dll" />
+    <Content Include="bin\Debug\System.Linq.dll" />
+    <Content Include="bin\Debug\System.Linq.Expressions.dll" />
+    <Content Include="bin\Debug\System.Linq.Parallel.dll" />
+    <Content Include="bin\Debug\System.Linq.Queryable.dll" />
+    <Content Include="bin\Debug\System.Memory.dll" />
+    <Content Include="bin\Debug\System.Memory.xml" />
+    <Content Include="bin\Debug\System.Net.Http.dll" />
+    <Content Include="bin\Debug\System.Net.NameResolution.dll" />
+    <Content Include="bin\Debug\System.Net.NetworkInformation.dll" />
+    <Content Include="bin\Debug\System.Net.Ping.dll" />
+    <Content Include="bin\Debug\System.Net.Primitives.dll" />
+    <Content Include="bin\Debug\System.Net.Requests.dll" />
+    <Content Include="bin\Debug\System.Net.Security.dll" />
+    <Content Include="bin\Debug\System.Net.Sockets.dll" />
+    <Content Include="bin\Debug\System.Net.WebHeaderCollection.dll" />
+    <Content Include="bin\Debug\System.Net.WebSockets.Client.dll" />
+    <Content Include="bin\Debug\System.Net.WebSockets.dll" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.dll" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
+    <Content Include="bin\Debug\System.ObjectModel.dll" />
+    <Content Include="bin\Debug\System.Reflection.dll" />
+    <Content Include="bin\Debug\System.Reflection.Extensions.dll" />
+    <Content Include="bin\Debug\System.Reflection.Primitives.dll" />
+    <Content Include="bin\Debug\System.Resources.Reader.dll" />
+    <Content Include="bin\Debug\System.Resources.ResourceManager.dll" />
+    <Content Include="bin\Debug\System.Resources.Writer.dll" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.VisualC.dll" />
+    <Content Include="bin\Debug\System.Runtime.dll" />
+    <Content Include="bin\Debug\System.Runtime.Extensions.dll" />
+    <Content Include="bin\Debug\System.Runtime.Handles.dll" />
+    <Content Include="bin\Debug\System.Runtime.InteropServices.dll" />
+    <Content Include="bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Content Include="bin\Debug\System.Runtime.Numerics.dll" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Formatters.dll" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Json.dll" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Primitives.dll" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Xml.dll" />
+    <Content Include="bin\Debug\System.Security.Claims.dll" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Csp.dll" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\Debug\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\Debug\System.Security.Principal.dll" />
+    <Content Include="bin\Debug\System.Security.SecureString.dll" />
+    <Content Include="bin\Debug\System.Text.Encoding.dll" />
+    <Content Include="bin\Debug\System.Text.Encoding.Extensions.dll" />
+    <Content Include="bin\Debug\System.Text.RegularExpressions.dll" />
+    <Content Include="bin\Debug\System.Threading.dll" />
+    <Content Include="bin\Debug\System.Threading.Overlapped.dll" />
+    <Content Include="bin\Debug\System.Threading.Tasks.dll" />
+    <Content Include="bin\Debug\System.Threading.Tasks.Parallel.dll" />
+    <Content Include="bin\Debug\System.Threading.Thread.dll" />
+    <Content Include="bin\Debug\System.Threading.ThreadPool.dll" />
+    <Content Include="bin\Debug\System.Threading.Timer.dll" />
+    <Content Include="bin\Debug\System.ValueTuple.dll" />
+    <Content Include="bin\Debug\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\Debug\System.Xml.XDocument.dll" />
+    <Content Include="bin\Debug\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\Debug\System.Xml.XmlSerializer.dll" />
+    <Content Include="bin\Debug\System.Xml.XPath.dll" />
+    <Content Include="bin\Debug\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\Release\Aadyam.SDS.Business.dll" />
+    <Content Include="bin\Release\Aadyam.SDS.Business.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\Microsoft.AspNet.SignalR.Core.dll" />
+    <Content Include="bin\Release\Microsoft.AspNet.SignalR.Core.pdb" />
+    <Content Include="bin\Release\Microsoft.AspNet.SignalR.Core.xml" />
+    <Content Include="bin\Release\Microsoft.AspNet.SignalR.SystemWeb.dll" />
+    <Content Include="bin\Release\Microsoft.AspNet.SignalR.SystemWeb.pdb" />
+    <Content Include="bin\Release\Microsoft.AspNet.SignalR.SystemWeb.xml" />
+    <Content Include="bin\Release\Microsoft.Owin.dll" />
+    <Content Include="bin\Release\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Release\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Release\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Release\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Release\Microsoft.Owin.xml" />
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.xml" />
+    <Content Include="bin\Release\Owin.dll" />
+    <Content Include="Model\Context\CNFDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CNFDB.edmx</DependentUpon>
+      <LastGenOutput>CNFDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Context\CNFDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CNFDB.edmx</DependentUpon>
+      <LastGenOutput>CNFDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Manager\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.3.3.5\build\Fody.targets" Condition="Exists('..\packages\Fody.3.3.5\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.3.3.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.3.3.5\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props'))" />
+  </Target>
+</Project>
